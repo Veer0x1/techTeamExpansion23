@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import db from "../database/db";
 import { doc, setDoc } from "firebase/firestore";
-import Toast, { Toaster } from "react-hot-toast";
+// import Toast, { Toaster } from "react-hot-toast";
 
 const From = () => {
   const [Name, setName] = useState("");
@@ -10,6 +10,7 @@ const From = () => {
   const [PhoneNumber, setPhoneNumber] = useState("");
 
   const Submit = () => {
+    // console.log({ Name, Branch, Email, PhoneNumber});
     if (Name === "" || Branch === "" || Email === "" || PhoneNumber === "") {
       console.log({ Name, Branch, Email, PhoneNumber });
       alert("Please fill all the fields");
@@ -27,8 +28,11 @@ const From = () => {
       alert("Please enter a valid phone number");
       return;
     }
+    // remove all the spaces from the name and branch
+    setName(Name.replace(/\s/g, ""));
+    setBranch(Branch.replace(/\s/g, ""));
     const docName = Name + Branch;
-    const docRef = doc(db, "users", docName);
+    const docRef = doc(db, "AryanElectrical", docName);
     const payload = {
       Name,
       Branch,
@@ -37,7 +41,7 @@ const From = () => {
     };
     setDoc(docRef, payload)
       .then(() => {
-        Toast.success("Form submitted successfully");
+        // Toast.success("Form submitted successfully");
         console.log("Document successfully written!");
         // clear the form
         setName("");
@@ -46,7 +50,7 @@ const From = () => {
         setPhoneNumber("");
       })
       .catch((error) => {
-        Toast.error("Something went wrong");
+        // Toast.error("Something went wrong");
         console.error("Error writing document: ", error);
       });
   }
