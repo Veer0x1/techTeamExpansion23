@@ -1,4 +1,4 @@
-# Task: Create a Form and Store Data in Firestore
+ Task: Create a Form and Store Data in Firestore
 
 ## Description
 
