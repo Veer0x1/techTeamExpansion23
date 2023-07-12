@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/index.css">
+        
+        
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <form class="form-signin" action="" id="Detailform">    
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Congratulations!</strong> Form submitted successfully.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+              <h2 class="form-signin-heading"><small>Fill out the details...</small></h2>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name" required="" autofocus="" />
+              <select class="form-select mb-3" name="branch" id="branch" required="" autofocus=""  >
+                <option value="CSE">Computer Science and Engineering</option>
+                <option value="Electrical">Electrical Engineering</option>
+                <option value="Electronics">Electronics and Communication Engineering</option>
+                <option value="MnC">Mathematics & Computing</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+                <option value="Other">Other lower branch</option>
+                
+              </select>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required="" autofocus="" />
+             
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Enter your phone number" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required=""/>      
+              
+              <div class="center-btn">
+              <button class="btn btn-success btn-block" type="submit" >Submit</button>  
+              </div> 
+            </form>
+          </div>
+    </div>
+    <footer class="text-center text-lg-start bg-dark text-light" style="margin-top:30px; margin-bottom:0px;">
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+          <div class="me-5 d-none d-lg-block">
+            <span><small>Shivang Bagri</small></span>
+          </div>
+      
+          
+        </section>
+      
+        
+      </footer> 
+    
+    <script defer type="module" src="js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
