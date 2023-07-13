@@ -1,0 +1,21 @@
+{
+  "name": "techteamexpansion23",
+  "version": "1.0.0",
+  "description": "form server",
+  "main": "app.js",
+  "scripts": {
+    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
+    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src"
+  },
+  "author": "Param",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "firebase": "^10.0.0",
+    "netlify-cli": "15.9.0",
+    "netlify-lambda": "^2.0.16",
+    "serverless-http": "3.2.0"
+  }
+}

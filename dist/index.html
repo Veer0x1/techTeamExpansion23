@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RegistrationForm</title>
+  <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700" rel="stylesheet">
+<link href="https://fontastic.s3.amazonaws.com/YKLiEB5nKeTck7NdBGoGKY/icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+
+<body translate="no">
+  <style>
+    *,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+html {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.4;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  color: #002c3c;
+  background-color: #f4fcff;
+}
+
+small {
+  font-size: 0.8rem;
+}
+
+h1 {
+  display: inline-block;
+  font-family: "Francois One", sans-serif;
+  font-size: 3rem;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 0.8rem 0;
+  border-bottom: 4px solid #31d47d;
+}
+
+p {
+  margin: 0 0 2rem 0;
+}
+
+a {
+  color: #31d47d;
+  text-decoration: none;
+}
+a:focus, a:hover {
+  color: #24ae64;
+}
+
+.text-muted, footer {
+  color: #a9bec6;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-form {
+  padding: 0 20px;
+}
+
+.form {
+  display: block;
+  max-width: 400px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label,
+.form-input {
+  display: block;
+  width: 100%;
+}
+
+.form-label {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.form-label--required {
+  position: relative;
+}
+.form-label--required:before {
+  content: "*";
+  position: absolute;
+  left: -10px;
+  color: #f42866;
+}
+
+.form-input {
+  padding: 10px;
+  background-color: transparent;
+  border: 0;
+}
+.form-input:focus {
+  outline: none;
+  background-color: #f0f7f9;
+}
+
+.form-footer {
+  text-align: right;
+}
+
+.form-error {
+  color: #f42866;
+  margin-top: 5px;
+}
+
+.button {
+  color: white;
+  white-space: nowrap;
+  background-color: #31d47d;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 2px;
+  transition: all 150ms ease-out;
+}
+.button:focus, .button:hover {
+  background-color: #219d5b;
+}
+
+.form-addon {
+  position: relative;
+  display: table;
+  width: 100%;
+  border: 1px solid #bcdae5;
+  background-color: #fff;
+  border-radius: 2px;
+}
+.form-addon .form-input,
+.form-addon .form-addon__addon {
+  display: table-cell;
+  vertical-align: middle;
+}
+.form-addon .form-input {
+  width: 100%;
+}
+.form-addon .form-addon__addon {
+  position: relative;
+  width: 40px;
+  text-align: center;
+}
+.form-addon .form-addon__addon:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 0;
+  height: calc(100% - 8px);
+  border-right: 1px solid #bcdae5;
+}
+
+.form-addon__icon {
+  position: absolute;
+  color: #31d47d;
+  font-size: 0.8rem;
+  line-height: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+.toaster {
+  position: fixed;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+}
+
+.toast {
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(-10px) rotateY(40deg);
+  transition: all 300ms ease;
+}
+.toast.toast--show {
+  transform: translateY(0) rotateY(0);
+  opacity: 1;
+}
+
+.toast--success {
+  background-color: #31d47d;
+}
+
+.toast--error {
+  background-color: #f42866;
+}
+
+footer {
+  margin-top: 10px;
+}
+
+/*---------------------------------------------*\
+    GentleForm related styles
+\*---------------------------------------------*/
+.form-addon .form-addon__icon {
+  transform: translateY(0);
+  opacity: 0;
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+.form-addon.is-valid [class*=icon-valid], .form-addon.is-invalid [class*=icon-invalid] {
+  transform: translateY(-50%);
+  opacity: 1;
+}
+.form-addon.is-invalid {
+  background-color: #fef4f7;
+  border-color: #f989ab;
+}
+.form-addon.is-invalid .form-addon__icon {
+  color: #f42866;
+}
+.form-addon.is-invalid .form-addon__addon:before {
+  border-color: #f989ab;
+}
+  </style>
+  <div class="toaster"></div>
+
+<main class="wrapper">
+  <section class="section-form">
+    <h1>RegistrationForm</h1>
+    <p>
+      Please fill this form<br>
+    </p>
+    <form action="/" method="post" name="signup" class="form" novalidate>
+      <div class="form-group">
+        <label for="name" class="form-label form-label--required">
+          Name:
+        </label>
+
+        <div class="form-addon" data-states-for="name">
+          <div class="form-addon__addon">
+            <span class="icon-name"></span>
+          </div>
+
+          <input type="text"
+                 id="name"
+                 name="name"
+                 class="form-input"
+                 placeholder="Full name"
+                 required>
+          
+          <span class="form-addon__icon icon-valid"></span>
+          <span class="form-addon__icon icon-invalid"></span>
+        </div>
+
+        <div data-errors-for="name">
+          <small class="form-error"
+                 data-errors-when="valueMissing">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label form-label--required">
+           Branch:
+        </label>
+
+        <div class="form-addon" data-states-for="password">
+          <div class="form-addon__addon">
+            <span class="icon-password"></span>
+          </div>
+
+          <input type="text"
+                 id="password"
+                 name="password"
+                 class="form-input"
+                 placeholder="Your branch"
+                 required>
+
+          <span class="form-addon__icon icon-valid"></span>
+          <span class="form-addon__icon icon-invalid"></span>
+        </div>
+
+        <div data-errors-for="password">
+          <small class="form-error"
+                 data-errors-when="valueMissing">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label form-label--required">
+          Email:
+        </label>
+
+        <div class="form-addon" data-states-for="email">
+          <div class="form-addon__addon">
+            <span class="icon-email"></span>
+          </div>
+
+          <input type="email"
+                 id="email"
+                 name="email"
+                 class="form-input"
+                 placeholder="name.branch(yr)@itbhu.ac.in"
+                 required>
+
+          <span class="form-addon__icon icon-valid"></span>
+          <span class="form-addon__icon icon-invalid"></span>
+        </div>
+
+        <div data-errors-for="email">
+          <small class="form-error"
+                 data-errors-when="valueMissing">
+            This field is required.
+          </small>
+          
+          <small class="form-error"
+                 data-errors-when="typeMismatch">
+            Please enter a valid email address.
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone" class="form-label form-label--required">
+          Phone number:
+        </label>
+
+        <div class="form-addon" data-states-for="phone">
+          <div class="form-addon__addon">
+            <span class="icon-phone"></span>
+          </div>
+
+          <input type="text"
+                 id="phone"
+                 name="phone"
+                 class="form-input"
+                 placeholder="123 456 7890"
+                 pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+                 required>
+
+          <span class="form-addon__icon icon-valid"></span>
+          <span class="form-addon__icon icon-invalid"></span>
+        </div>
+
+        <div data-errors-for="phone">
+            <small class="form-error"
+                 data-errors-when="valueMissing">
+            This field is required.
+          </small>
+          <small class="form-error"
+                 data-errors-when="patternMismatch">
+            Please enter a valid phone number.
+          </small>
+        </div>
+      </div>
+      <div class="form-footer">
+        <button type="submit" class="button">Sign up</button>
+        <button type="reset" class="button">Reset</button>
+      </div>
+    </form>
+  </section>
+</main>
+</body>
+
+</html>
