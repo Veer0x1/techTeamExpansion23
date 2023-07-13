@@ -1,0 +1,48 @@
+const postData = async(e)=> {
+      e.preventDefault();
+
+      const {name, branch, email, phone} = user;
+
+      if(name && branch && email && phone)
+      {
+        const res = await fetch(`https://informationform-fcc7b-default-rtdb.firebaseio.com/${name.split(' ')[0]}${branch}.json`,
+        {
+          method : "POST",
+          headers: {
+          "Content-Type" : "application/json",
+        },
+        body : JSON.stringify({
+          name,
+          branch,
+          email,
+          phone,
+        }),
+        
+        } 
+        );
+        if(res)
+      {
+        setUser({
+          name : "",
+          branch : "",
+          email : "",
+          phone : "",
+        })
+        alert("Data stored Succefully");
+      }
+      }
+      else
+      { 
+          alert("Fill required fields");
+        
+      }
+
+      }
+      let name, value;
+  const getUserData = (event)=>{
+    name = event.target.name;
+     value = event.target.value;
+
+     setUser({...user, [name] : value});
+
+  }
