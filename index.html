@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix Login Page | CodingNepal</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="#"><img src="ecellbgrem.png" alt="logo" /></a>
+    </nav>
+    <div class="form-wrapper">
+      <h2>Register</h2>
+      <form action="#">
+        <div class="form-control">
+          <input type="text" id="Name" required />
+          <label>Name</label>
+        </div>
+        <div class="form-control">
+          <input type="tel" id="phone" name="phone" placeholder="" required />
+          <label>Phone</label>
+        </div>
+        <div class="form-control">
+          <input type="email" id="Email" required />
+          <label>Email</label>
+        </div>
+        <div class="form-control">
+          <div class="select-wrapper">
+            <label for="branches">Choose your branch:</label>
+            <select name="branches" id="branches">
+              <option value="" disabled selected></option>
+              <option value="cse">Computer Science and Engineering</option>
+              <option value="ee">Electrical Engineering</option>
+              <option value="me">Mechanical Engineering</option>
+              <option value="ce">Civil Engineering</option>
+              <option value="min">Mining Engineering</option>
+              <option value="che">Chemical Engineering</option>
+              <option value="cera">Ceramic Engineering</option>
+              <option value="phe">Pharmaceutical Engineering</option>
+              <option value="bmd">Biomedical Engineering</option>
+              <option value="bce">Biochemical Engineering</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <input type="text" required />
+          <label>Message</label>
+        </div>
+
+        <button type="submit">Submit</button>
+        <div class="form-help">
+          <a href="#">Need help?</a>
+        </div>
+      </form>
+
+      <small>
+        This page is protected by Google reCAPTCHA to ensure you're not a bot.
+        <a href="#">Learn more.</a>
+      </small>
+    </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyA0hA2Bc74PEzeuoahNApERIEkxFqv_jSo",
+        authDomain: "techteamexpansion23.firebaseapp.com",
+        projectId: "techteamexpansion23",
+        storageBucket: "techteamexpansion23.appspot.com",
+        messagingSenderId: "542718392377",
+        appId: "1:542718392377:web:bf6178e1b28494fe8c35e8",
+        measurementId: "G-39B1R2EWV2",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      // Get a reference to the database service
+      const db = getDatabase(app);
+
+      document.getElementById("submit").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        set(ref(db, "user/" + document.getElementById("Name").value), {
+          name: document.getElementById("Name").value,
+          email: document.getElementById("Email").value,
+          branch: document.getElementById("Branch").value,
+          phone: document.getElementById("phone").value,
+        })
+          .then(() => {
+            alert("Registration Successful");
+          })
+          .catch((error) => {
+            console.error("Error registering user: ", error);
+          });
+      });
+    </script>
+  </body>
+</html>
