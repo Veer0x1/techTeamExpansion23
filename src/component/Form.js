@@ -80,7 +80,6 @@ export default function Form() {
           toast.error("An Error occured pls try again !!!");
           console.error("Error writing document: ", error);
         });
-        toast.success("Data stored successfully !!!")
     }
 
     else{
