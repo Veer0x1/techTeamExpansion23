@@ -2,7 +2,21 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA0hA2Bc74PEzeuoahNApERIEkxFqv_jSo",
+  authDomain: "techteamexpansion23.firebaseapp.com",
+  projectId: "techteamexpansion23",
+  storageBucket: "techteamexpansion23.appspot.com",
+  messagingSenderId: "542718392377",
+  appId: "1:542718392377:web:bf6178e1b28494fe8c35e8",
+  measurementId: "G-39B1R2EWV2",
+};
+
 export default function Form() {
+
   let docWidth = window.innerWidth;
 
   let imageStyle =
@@ -38,55 +52,43 @@ export default function Form() {
           boxShadow: "rgba(0, 0, 0, 0.24) 2px 3px 8px",
         };
 
-  const [user, setUser] = useState({
-    name: "",
-    branch: "",
-    email: "",
-    phoneNumber: "",
-  });
+  const [Name, setName] = useState("");
+  const [Branch, setBranch] = useState("");
+  const [Email, setEmail] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
 
-  let name, value;
-  const getUserData = (event) => {
-    name = event.target.name;
-    value = event.target.value;
-
-    setUser({ ...user, [name]: value });
-  };
-
-  const postData = async (e) => {
-    e.preventDefault();
-
-    const { name, branch, email, phoneNumber } = user; // data destructuring
-
-    if (name && branch && email && phoneNumber) {
-      const res = await fetch(
-        "https://form-validation-ecell-default-rtdb.firebaseio.com/ecellformvalidation.json",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            branch,
-            email,
-            phoneNumber,
-          }),
-        }
-      );
-
-      if (res) {
-        setUser({
-          name: "",
-          branch: "",
-          email: "",
-          phoneNumber: "",
+  const PostData = () => {
+    if(Name && Branch && Email && PhoneNumber){
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const docRef = doc(db, "ArihantMining", "users");
+      const payload = {
+        Name,
+        Branch,
+        Email,
+        PhoneNumber,
+      };
+      setDoc(docRef, payload)
+        .then(() => {
+          toast.success("Data stored successfully !!!")
+          setName("");
+          setBranch("");
+          setEmail("");
+          setPhoneNumber("");
+        })
+        .catch((error) => {
+          toast.error("An Error occured pls try again !!!");
+          console.error("Error writing document: ", error);
         });
-        toast.success("Data stored successfully !!!np");
-      }
-    } else {
+        toast.success("Data stored successfully !!!")
+
+    }
+
+    else{
       toast.error("Please fill the data correctly !!!");
     }
+
+      
   };
 
   return (
@@ -102,7 +104,7 @@ export default function Form() {
           style={style}
         >
           <main className="form-signin w-100 m-auto">
-            <form method="POST">
+            <form>
               <img
                 className="ms-auto me-auto"
                 src="https://yt3.googleusercontent.com/JBMSJ-Nx98Kc7g_SK2m197t9CVXpKVPwmK4I46iSpURF73JAd21Sk3w9g7Jx9EWkvr4W3uA1Iw=s900-c-k-c0x00ffffff-no-rj"
@@ -127,23 +129,28 @@ export default function Form() {
                   type="text"
                   required
                   className="form-control"
-                  id="name"
-                  name="name"
+                  id="Name"
+                  name="Name"
                   placeholder="Name"
-                  value={user.name}
-                  onChange={getUserData}
+                  value={Name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
                 />
                 <label htmlFor="Name">Name</label>
               </div>
 
               <select
                 className="form-select my-2"
-                name="branch"
-                id="branch"
-                required=""
-                value={user.branch}
-                onChange={getUserData}
+                name="Branch"
+                id="Branch"
+                required
+                value={Branch}
+                onChange={(e) => {
+                  setBranch(e.target.value);
+                }}
               >
+                <option value="none">Branch</option>
                 <option value="CSE">Computer Science and Engineering</option>
                 <option value="Electrical">Electrical Engineering</option>
                 <option value="Electronics">
@@ -156,7 +163,7 @@ export default function Form() {
                 <option value="Mining">Mining Engineering</option>
                 <option value="Ceramic">Ceramic Engineering</option>
                 <option value="Pharma">Pharma</option>
-                <option value="Other">Other lower branch</option>
+                <option value="Other">Other branch</option>
               </select>
 
               <div className="form-floating my-2">
@@ -164,11 +171,13 @@ export default function Form() {
                   type="email"
                   required
                   className="form-control"
-                  id="email"
-                  name="email"
+                  id="Email"
+                  name="Email"
                   placeholder="name@example.com"
-                  value={user.email}
-                  onChange={getUserData}
+                  value={Email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
                 <label htmlFor="Email">Email address</label>
               </div>
@@ -178,11 +187,13 @@ export default function Form() {
                   type="number"
                   required
                   className="form-control"
-                  id="phoneNumber"
-                  name="phoneNumber"
+                  id="PhoneNumber"
+                  name="PhoneNumber"
                   placeholder="Phone number"
-                  value={user.phoneNumber}
-                  onChange={getUserData}
+                  value={PhoneNumber}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
                 />
                 <label htmlFor="PhoneNumber">Contact number</label>
               </div>
@@ -190,12 +201,11 @@ export default function Form() {
               <button
                 className="btn btn-primary w-100 py-2 my-4"
                 style={{ backgroundColor: "#ff5945", border: "0px" }}
-                type="submit"
-                onClick={postData}
+                onClick={
+                  () => { PostData() }}
               >
                 Sign in
               </button>
-              {/* <p className="mt-5 mb-3 text-body-secondary">© 2017–2023</p> */}
             </form>
           </main>
           <script
