@@ -6,7 +6,7 @@ The task involves creating a form with specific fields and submitting the form. 
 
 ## Task Requirements
 
-1. Create a form with the following fields:
+1. Create a form with the following fields:-
    - **Name**: A field for participants to enter their full name.
    - **Branch**: A field for participants to enter their branch of study.
    - **Email**: A field for participants to enter their email address.
@@ -30,7 +30,7 @@ The task involves creating a form with specific fields and submitting the form. 
 
 The deadline for completing this task is the end of the day (EOD) on July 13th.
 
-## Additional Notes
+## Additional Notes.
 
 - Participants are free to use any framework of their choice for building the form and UI. They can select from popular options such as React, Angular, Vue.js, or any other framework they are comfortable with.
 
