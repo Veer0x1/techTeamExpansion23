@@ -6,7 +6,7 @@ The task involves creating a form with specific fields and submitting the form. 
 
 ## Task Requirements
 
-1. Create a form with the following fields:
+1. Create a form with the following fields:-
    - **Name**: A field for participants to enter their full name.
    - **Branch**: A field for participants to enter their branch of study.
    - **Email**: A field for participants to enter their email address.
