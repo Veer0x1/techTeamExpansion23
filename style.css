@@ -1,0 +1,100 @@
+body {background-color: black;}
+
+input[type=text], select {
+    font-size: 20px;
+    font-family: "Berlin Sans FB";
+    width: 80%;
+    height: 50px ;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=email], select {
+    font-size: 20px;
+    width: 80%; 
+    font-family: "Berlin Sans FB";
+    height: 50px;
+  }
+
+  input[type=tel], select {
+    font-size: 20px;
+    width: 80%;
+    font-family: "Berlin Sans FB";
+    height: 50px;
+  }
+  
+  button {
+    font-size: 20px;
+    width: 80%;
+    background-color: #010112;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #282928;
+  }
+  
+  div {
+    font-size: 30px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    border-radius:100px;
+    background-color: #ec8646;
+    padding: 10px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  header {
+    font-family: Agency FB;
+    text-align: center;
+    font-size: 30px;
+    color: rgb(255, 252, 245);
+  }
+  
+  nav {
+    float: left;
+    width: 50%;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  article {
+    align-items: center ;
+    float: left;
+    padding: 20px;
+    width: 50%;
+  }
+  
+  section::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  footer {
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+  
+  @media (max-width: 600px) {
+    nav, article {
+      width: 100%;
+      height: auto;
+    }
+  }
