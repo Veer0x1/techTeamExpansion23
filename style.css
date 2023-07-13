@@ -1,0 +1,111 @@
+body{
+    background-color: #CEEAF8;
+}
+.main{
+    display:flex;
+    min-height:100vh;
+    align-items:center;
+    justify-content: center;
+}
+.maindiv{
+    display:flex;
+    flex-direction: column;
+    margin:2rem;
+
+    max-width: 600px;
+    min-height:100vh;
+    position:relative;
+    
+   
+   
+    
+    background-color: white;  
+    padding: 1.5rem;
+}
+h1{
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    cursor: pointer;
+    color:#545B5F;
+    text-shadow: 2px 2px 4px gray;
+}
+.form-group{
+    display:flex;
+    flex-direction: column;
+    padding:20px;
+    font-size: 1rem;
+    font-weight: 600;
+   
+    cursor: pointer;
+   
+}
+input{
+    height:70px;
+    font-weight: 500;
+}
+.btn-bd-primary {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+    --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+    --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+    
+  }
+  .button{
+   text-align: center;
+   
+  }
+  p{
+    margin:0px;
+    padding:0px;
+  }
+  .input-field{
+    outline:0px;
+    border:0px;
+    border-bottom: 2px solid black;
+    background-color:transparent;
+    padding:10px 0px 0px 0px;
+    color:black;
+    font-weight: bold;
+    
+  }
+  .input-label{
+   
+    top:0;
+    font-size:1em;
+    color:black;
+    text-transform:uppercase;
+  }
+  .input-field:focus{
+    border-image:linear-gradient(to right,#ef5a03,#d1d375);
+    border-image-slice: 1;
+  }
+  .input-field:focus ~ .input-label{
+    
+    top:0;
+    font-size:1em;
+    color:#ef5a03;
+  }
+  .alert{
+    text-align:center;
+    background-color: #7ef1b6;
+    border-radius:5px;
+    font-size:18px;
+    margin-top: 20px;
+    display:none;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"]{
+    font-weight:400;
+  }
+  .error{
+    color:red;
+  }
