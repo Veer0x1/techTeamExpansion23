@@ -1,9 +1,10 @@
 // Get form elements
+require('dotenv').config();
 const express = require("express");
 const ap = express();
 const path = require('path');
 const serverless=require('serverless-http');
-const formPath = path.join(__dirname, "../dist/index.html");
+const formPath = path.join(__dirname, "./dist/index.html");
 const router = express.Router();
 const bodyParser = require("body-parser");
 ap.use(bodyParser.urlencoded({ extended: true }));
@@ -15,13 +16,13 @@ const { getFirestore } = require("firebase/firestore");
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyA0hA2Bc74PEzeuoahNApERIEkxFqv_jSo",
-    authDomain: "techteamexpansion23.firebaseapp.com",
-    projectId: "techteamexpansion23",
-    storageBucket: "techteamexpansion23.appspot.com",
-    messagingSenderId: "542718392377",
-    appId: "1:542718392377:web:bf6178e1b28494fe8c35e8",
-    measurementId: "G-39B1R2EWV2"
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId
   };
 // const firebaseConfig = {
 //   apiKey: "AIzaSyBsVanbUf_Hpm5ddTYjtDIz0cP9UJsy7m8",
@@ -102,6 +103,10 @@ if (!validatePhone(phone)) {
     res.status(500).send("<script>alert('Error adding document');window.history.back();</script>");
   }
 });
-ap.use(`/.netlify/functions/api`, router);
-module.exports = ap;
-module.exports.handler = serverless(ap);
+ap.use("/", router);
+ap.listen(process.env.PORT||3000,function(){
+  console.log("Server up on port 3000");
+});
+// ap.use(`/.netlify/functions/api`, router);
+// module.exports = ap;
+// module.exports.handler = serverless(ap);
