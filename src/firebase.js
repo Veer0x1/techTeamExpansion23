@@ -1,14 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyCKf88fUD1eBI2u5zzUwHIjMFvJN9G9ooM",
-  authDomain: "form-ade86.firebaseapp.com",
-  projectId: "form-ade86",
-  storageBucket: "form-ade86.appspot.com",
-  messagingSenderId: "380640679113",
-  appId: "1:380640679113:web:a1ad9b688d01c2d9e5e918",
-  measurementId: "https://form-ade86-default-rtdb.firebaseio.com/"
+  apiKey: "AIzaSyA0hA2Bc74PEzeuoahNApERIEkxFqv_jSo",
+  authDomain: "techteamexpansion23.firebaseapp.com",
+  projectId: "techteamexpansion23",
+  storageBucket: "techteamexpansion23.appspot.com",
+  messagingSenderId: "542718392377",
+  appId: "1:542718392377:web:bf6178e1b28494fe8c35e8",
+  measurementId: "G-39B1R2EWV2"
 };
+
 
 
 export const app = initializeApp(firebaseConfig);
